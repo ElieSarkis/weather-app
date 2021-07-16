@@ -39,9 +39,7 @@ export default function Main({ unitValue, setUnitValue, chosenCity, setChosenCit
   
   const searchCity = () => {
     setCityChanged(!cityChanged);
-    if(isCityAvailable===true){
       router.push({pathname: `city/${chosenCity}`})
-    }
   }
 
     return (

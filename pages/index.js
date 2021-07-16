@@ -16,8 +16,8 @@ export default function Home() {
     const apiKey = '7b3650e804488da60201c155f7feadeb';
     const count = 7;
     axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${chosenCity}&units=${unitValue}&cnt=${count}&APPID=${apiKey}`)
-    .then((res) => {localStorage.setItem('city-data', JSON.stringify(res.data)); setCityData(res.data); setIsCityAvailable(true);})
-    .catch((err) => console.log(err));
+    .then((res) => {if(res.data.city.name.length>0){localStorage.setItem("city-exist", true)}; localStorage.setItem('city-data', JSON.stringify(res.data)); setCityData(res.data);})
+    .catch((err) =>  localStorage.setItem("city-exist", false));
   }, [cityChanged, unitValue])
 
 
